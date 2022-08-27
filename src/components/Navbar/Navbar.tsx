@@ -97,7 +97,7 @@ export default function Navbar() {
   return (
     <>
       <Box sx={{ display: 'flex' }}>
-        <AppBar sx={{ backgroundColor: '#192e22' }} component="nav">
+        <AppBar sx={{ backgroundColor: '#bf9d21' }} component="nav">
           <Container maxWidth='lg'>
             <Toolbar>
               <IconButton
@@ -153,7 +153,7 @@ export default function Navbar() {
           </Drawer>
         </Box>
       </Box>
-      <AppBar position="fixed" sx={{ backgroundColor: '#192e22', top: 'auto', bottom: 0, display: { xs: 'block', md: 'none' } }}>
+      <AppBar position="fixed" sx={{ backgroundColor: '##bf9d21', top: 'auto', bottom: 0, display: { xs: 'block', md: 'none' } }}>
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-around' }}>
           <IconButton color="inherit">
             <HomeIcon />
