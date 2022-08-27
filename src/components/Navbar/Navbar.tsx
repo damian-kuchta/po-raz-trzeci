@@ -19,11 +19,11 @@ import { styled, alpha } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
 import InputBase from '@mui/material/InputBase';
 import logo from '../../assets/app-logo.png'
-
+import { Link } from 'react-router-dom';
 import './styles.scss'
 
-const navItems = ['Jak to działa?', 'Dostawa i płatność'];
-const navItemsMobile = ['Jak to działa?', 'Dostawa i płatność']
+const navItems = [{ text: 'Jak to działa?', path: 'about' }, { text: 'Dostawa i płatność', path: 'ship' }]
+
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -81,12 +81,14 @@ export default function Navbar() {
       </Box>
       <Divider />
       <List>
-        {navItemsMobile.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText primary={item} />
-            </ListItemButton>
-          </ListItem>
+        {navItems.map((item, idx) => (
+          <Link key={idx} to={item.path}>
+            <ListItem disablePadding>
+              <ListItemButton sx={{ textAlign: 'center' }}>
+                <ListItemText primary={item.text} />
+              </ListItemButton>
+            </ListItem>
+          </Link>
         ))}
       </List>
     </Box>
@@ -97,7 +99,7 @@ export default function Navbar() {
   return (
     <>
       <Box sx={{ display: 'flex' }}>
-        <AppBar sx={{ backgroundColor: '#bf9d21' }} component="nav">
+        <AppBar sx={{ backgroundColor: '#0d2a10' }} component="nav">
           <Container maxWidth='lg'>
             <Toolbar>
               <IconButton
@@ -111,13 +113,17 @@ export default function Navbar() {
               </IconButton>
               <Box
               >
-                <img className='logo' alt='logo' src={logo}></img>
+                <Link to='/'>
+                  <img className='logo' alt='logo' src={logo}></img>
+                </Link>
               </Box>
               <Box sx={{ display: { xs: 'none', md: 'block' } }}>
-                {navItems.map((item) => (
-                  <Button key={item} sx={{ color: '#fff' }}>
-                    {item}
-                  </Button>
+                {navItems.map((item, idx) => (
+                  <Link key={idx} to={item.path}>
+                    <Button sx={{ color: '#fff' }}>
+                      {item.text}
+                    </Button>
+                  </Link>
                 ))}
               </Box>
               <Box sx={{ display: 'flex', flexGrow: '1', justifyContent: 'flex-end' }}>
@@ -153,7 +159,7 @@ export default function Navbar() {
           </Drawer>
         </Box>
       </Box>
-      <AppBar position="fixed" sx={{ backgroundColor: '##bf9d21', top: 'auto', bottom: 0, display: { xs: 'block', md: 'none' } }}>
+      <AppBar position="fixed" sx={{ backgroundColor: '#0d2a10', top: 'auto', bottom: 0, display: { xs: 'block', md: 'none' } }}>
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-around' }}>
           <IconButton color="inherit">
             <HomeIcon />
